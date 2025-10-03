@@ -1,0 +1,367 @@
+/* -------------------------------------- */
+/* 1. VARIABLES Y RESET BÁSICO */
+/* -------------------------------------- */
+:root {
+    /* Paleta de colores moderna: Dark Mode */
+    --color-primary: #1a1a1a;        /* Fondo principal oscuro */
+    --color-secondary: #0d0d0d;      /* Fondo de secciones oscuras */
+    --color-accent: #0077ff;         /* Azul eléctrico para el 'Láser' */
+    --color-text: #ffffff;           /* Texto claro */
+    --color-text-light: #cccccc;     /* Texto secundario */
+    --color-card-bg: #222222;        /* Fondo de tarjetas */
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-primary);
+    overflow-x: hidden; /* Evita barras de desplazamiento horizontales */
+}
+
+/* -------------------------------------- */
+/* 2. TIPOGRAFÍA Y ESTRUCTURA GENERAL */
+/* -------------------------------------- */
+.section-padding {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.section-description {
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Clases de utilidad */
+.dark-section {
+    background-color: var(--color-secondary);
+}
+.accent {
+    color: var(--color-accent);
+}
+
+/* -------------------------------------- */
+/* 3. BOTONES (IMPACTANTES) */
+/* -------------------------------------- */
+.button {
+    display: inline-block;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.3s, background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button.primary {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+.button.primary:hover {
+    background-color: #0099ff; /* Tono más claro de accent */
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+.button.secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+
+/* -------------------------------------- */
+/* 4. SECCIÓN HERO (HEADER) */
+/* -------------------------------------- */
+.hero {
+    min-height: 80vh;
+    background: url('https://picsum.photos/1600/900?grayscale&blur=5') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+/* Overlay oscuro para mejorar la legibilidad del texto */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: var(--color-text-light);
+}
+
+
+/* -------------------------------------- */
+/* 5. SECCIÓN TIPOS DE LÁSER (GRID) */
+/* -------------------------------------- */
+.laser-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas por defecto */
+    gap: 40px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.laser-card {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+    border: 1px solid transparent;
+}
+
+.laser-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 119, 255, 0.2); /* Sombra de acento en hover */
+    transform: translateY(-5px);
+    border: 1px solid var(--color-accent);
+}
+
+.laser-card .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.laser-card h3 {
+    color: var(--color-text);
+}
+/* Re-aplicamos el color de acento solo al láser de Fibra para diferenciarlo visualmente */
+.laser-card.fiber h3 {
+    color: var(--color-accent);
+}
+
+.laser-card ul {
+    list-style: none;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.laser-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+.laser-card li:last-child {
+    border-bottom: none;
+}
+
+
+/* -------------------------------------- */
+/* 6. SECCIÓN MATERIALES (VISUAL GRID) */
+/* -------------------------------------- */
+.materials-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.material-item {
+    background-color: #333;
+    color: var(--color-text);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    cursor: default;
+    border: 1px solid #333;
+}
+
+.material-item:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent);
+}
+
+
+/* -------------------------------------- */
+/* 7. PORTFOLIO (GRID DE EJEMPLOS) */
+/* -------------------------------------- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.portfolio-item {
+    min-height: 200px;
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    border: 2px solid transparent;
+    /* Esto sería un placeholder. En el sitio real, aquí iría una imagen de fondo */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/300/200');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 0 0 5px var(--color-accent);
+    transform: scale(1.03);
+    border-color: var(--color-accent);
+}
+
+/* -------------------------------------- */
+/* 8. SECCIÓN CTA (Llamada a la Acción) */
+/* -------------------------------------- */
+.cta-section {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.cta-section h3 {
+    color: var(--color-primary);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.cta-section .button.secondary {
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    color: var(--color-accent);
+}
+.cta-section .button.secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-accent);
+}
+
+/* -------------------------------------- */
+/* 9. FOOTER */
+/* -------------------------------------- */
+.site-footer {
+    background-color: var(--color-secondary);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+
+/* -------------------------------------- */
+/* 10. RESPONSIVE DESIGN (Móviles) */
+/* -------------------------------------- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        min-height: 60vh;
+    }
+    
+    .hero .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .laser-grid {
+        /* Pasa a una sola columna en pantallas pequeñas */
+        grid-template-columns: 1fr; 
+    }
+    
+    .laser-card {
+        padding: 25px;
+    }
+    
+    .button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+    
+    .cta-section h3 {
+        font-size: 1.5rem;
+    }
+}
